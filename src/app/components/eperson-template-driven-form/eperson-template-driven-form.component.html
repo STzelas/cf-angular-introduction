@@ -6,24 +6,24 @@
       <input matInput ngModel required type="text" name="givenName" #givenName="ngModel"/>
       <mat-error>First Name is required</mat-error>
     </mat-form-field>
-    <mat-form-field> <!--material-->
+    <mat-form-field> 
       <mat-label>Last Name</mat-label>
-      <input matInput required type="text" name="surName"/>
+      <input matInput ngModel required type="text" name="surName" #surName="ngModel"/>
       <mat-error>Last Name is required</mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Age</mat-label>
-      <input matInput required type="number" min="18" max="100" name="age"/>
+      <input matInput ngModel required type="number" min="18" max="100" name="age" #age="ngModel"/>
       <mat-error>Age is required</mat-error>
     </mat-form-field>
-    <mat-form-field> <!--material-->
+    <mat-form-field> 
       <mat-label>Email</mat-label>
-      <input matInput required type="email" name="email"/>
+      <input matInput ngModel required type="email" name="email" #email="ngModel"/>
       <mat-error>Email is required</mat-error>
     </mat-form-field>
-    <mat-form-field> <!--material-->
+    <mat-form-field> 
       <mat-label>Education</mat-label>
-      <mat-select required name="education">
+      <mat-select required ngModel name="education" #education="ngModel">
         <mat-option value="Some college, no degree">Some college, no degree</mat-option>
         <mat-option value="Master's degree">Master's degree</mat-option>
         <mat-option value="Bachelor's degree">Bachelor's degree</mat-option>
