@@ -14,7 +14,7 @@ export class SimpleDataTableComponent {
 
   sortOrder = {
     givenName: 'none',
-    surName: 'none',
+    surname: 'none',
     age: 'none',
     email: 'none',
     education: 'none'

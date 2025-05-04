@@ -23,14 +23,14 @@ export class EpersonTemplateDrivenFormComponent {
     console.log(value)
     console.log(this.form)
     console.log(this.form?.form.get('givenName')?.value)   // Το this.form αναφέρεται στο form πανωμ ενώ το .form αναφέρεται στο οτι έχουμε form γενικά
-    console.log(this.form?.form.controls['surName'].value)
+    console.log(this.form?.form.controls['surname'].value)
     this.person.emit(value)
   }
 
   onSetValue() {
     this.form?.setValue({
       givenName:"John",
-      surName:"Doe",
+      surname:"Doe",
       age: 30,
       email: "john@aueb.gr",
       education: "Bachelor's degree"

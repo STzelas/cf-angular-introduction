@@ -4,8 +4,8 @@
       <th role="button" (click)="sortData('givenName')">
         First Name {{sortSign('givenName')}}
       </th>
-      <th role="button" (click)="sortData('surName')">
-        Last Name {{sortSign('surName')}}
+      <th role="button" (click)="sortData('surname')">
+        Last Name {{sortSign('surname')}}
       </th>
       <th role="button" (click)="sortData('age')">
         Age {{sortSign('age')}}
@@ -22,7 +22,7 @@
     @for (row of data; track row) {
       <tr class="align-middle" (dblclick)="onPersonClicked(row)">
         <td>{{row.givenName}}</td>
-        <td>{{row.surName}}</td>
+        <td>{{row.surname}}</td>
         <td>{{row.age}}</td>
         <td>{{row.email}}</td>
         <td>{{row.education}}</td>

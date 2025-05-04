@@ -30,7 +30,7 @@ export class ComponentOutputExampleComponent {
 
     First Name: ${person.givenName}
 
-    Last Name: ${person.surName}
+    Last Name: ${person.surname}
 
     Age: ${person.age}
 
@@ -53,7 +53,7 @@ export class ComponentOutputExampleComponent {
     </tr>
     <tr>
       <td class="fw-semibold text-end">Last Name</td>
-      <td class="ps-2">{{person.surName}}</td>
+      <td class="ps-2">{{person.surname}}</td>
     </tr>
     <tr>
       <td class="fw-semibold text-end">Age</td>
