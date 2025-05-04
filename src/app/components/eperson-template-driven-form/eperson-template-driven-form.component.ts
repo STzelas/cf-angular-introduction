@@ -1,4 +1,4 @@
-import { Component, ViewChild, EventEmitter } from '@angular/core';
+import { Component, ViewChild, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms'
 import { MatSelectModule } from '@angular/material/select';
@@ -15,6 +15,7 @@ import { EPerson } from 'src/app/shared/interfaces/eperson';
   styleUrl: './eperson-template-driven-form.component.css'
 })
 export class EpersonTemplateDrivenFormComponent {
+  @Output() person = new EventEmitter<EPerson>()
   @ViewChild('eForm', {static:false}) form:NgForm | undefined
 
 
@@ -23,6 +24,7 @@ export class EpersonTemplateDrivenFormComponent {
     console.log(this.form)
     console.log(this.form?.form.get('givenName')?.value)   // Το this.form αναφέρεται στο form πανωμ ενώ το .form αναφέρεται στο οτι έχουμε form γενικά
     console.log(this.form?.form.controls['surName'].value)
+    this.person.emit(value)
   }
 
   onSetValue() {
