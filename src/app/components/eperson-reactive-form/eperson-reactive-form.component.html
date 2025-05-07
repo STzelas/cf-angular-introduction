@@ -1,1 +1,37 @@
-<p>eperson-reactive-form works!</p>
+<div class="d-flex flex-column">
+  <h5>New Person Form</h5>
+  <form [formGroup]="form" class="d-flex flex-column">
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input type="text" matInput formControlName="givenName">
+      <mat-error>First name is required field</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input type="text" matInput formControlName="surname">
+      <mat-error>Last name is required field</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Age</mat-label>
+      <input type="number" matInput formControlName="age">
+      <mat-error>Age is required field</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="text" matInput formControlName="email">
+      <mat-error>Email is required field</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Education</mat-label>
+      <mat-select formControlName="education">
+        <mat-option value="Some College, no degree">Some College, no degree</mat-option>
+        <mat-option value="Master's Degree">Master's Degree</mat-option>
+        <mat-option value="Bachelor's Degree">Bachelor's Degree</mat-option>
+        <mat-option value="Associate's Degree">Associate's Degree</mat-option>
+      </mat-select>
+      <mat-error>Education is required field</mat-error>
+    </mat-form-field>
+  </form>
+  <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="onSubmit(form.value)">Submit</button>
+  <button class="mt-2" mat-button (click)="onSetValue()">Set Value</button>
+</div>
