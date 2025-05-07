@@ -33,6 +33,7 @@ export class EpersonReactiveFormComponent {
     console.log("Data", data)
     console.log("givenName>>", this.form.controls['givenName'].value)
     this.form.controls['surname'].setValue('Papakis')
+    console.log(this.form.value)
   }
 
   onSetValue() {
