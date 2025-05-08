@@ -20,7 +20,6 @@ export class ReactiveFormExampleComponent {
     // console.log("Father >> ", data)
     this.currentPerson = data
     this.persons.push(data)
-    
     this.personService.modifiedDataTable.set(true)
   }
 } 
