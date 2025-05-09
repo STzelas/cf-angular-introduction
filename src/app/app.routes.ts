@@ -11,7 +11,6 @@ import { ReactiveFormExampleComponent } from './components/reactive-form-example
 import { HttpClientExampleComponent } from './components/http-client-example/http-client-example.component';
 
 export const routes: Routes = [
-  {path: "welcome", component: WelcomeComponent},
   {path: "for-directive-example", component: ForDirectiveExampleComponent},
   {path: 'component-input-example', component: ComponentInputExampleComponent},
   {path: 'event-bind-example', component: EventBindExampleComponent},
