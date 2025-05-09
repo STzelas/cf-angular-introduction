@@ -21,7 +21,7 @@ export class SimpleDataTableComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['data'] && this.data) {
       console.log("ngOnChanges", this.data)
-      this.epersonData = this.data
+      this.epersonData = [...this.data]
     }
 
     if (changes['myData']) {
@@ -54,7 +54,7 @@ export class SimpleDataTableComponent {
     console.log(sortKey)
     if(this.sortOrder[sortKey] === 'asc') {
       this.sortOrder[sortKey] = 'desc'
-      this.epersonData = sortBy(this.epersonData, sortKey).reverse()
+      this.epersonData = [...sortBy(this.epersonData, sortKey)].reverse()
     } else {
       this.sortOrder[sortKey] = 'asc'
       this.epersonData = sortBy(this.epersonData, sortKey) // μόνο asc τα κάνει η sortBy()
