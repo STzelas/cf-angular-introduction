@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { DadJoke, ChuckNorrisJoke } from '../interfaces/joke';
 
 const DAD_JOKES_API_URL = 'https://icanhazdadjoke.com/'
-const CHUCK_NORRIS_JOKES_API_URL = 'https://api.chucknorris.io/'
+const CHUCK_NORRIS_JOKES_API_URL = 'https://api.chucknorris.io/jokes/random'
 
 @Injectable({
   providedIn: 'root'
