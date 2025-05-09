@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, Output, effect, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { EPerson } from 'src/app/shared/interfaces/eperson';
 import {sortBy} from 'lodash-es'
-import { PersonService } from 'src/app/shared/services/person.service';
+// import { PersonService } from 'src/app/shared/services/person.service';
 
 @Component({
   selector: 'app-simple-data-table',
@@ -11,21 +11,35 @@ import { PersonService } from 'src/app/shared/services/person.service';
 })
 export class SimpleDataTableComponent {
   @Input() data: EPerson[] | undefined
+  @Input() myData: boolean = true
   @Output() personClicked = new EventEmitter<EPerson>()
 
-  personService = inject(PersonService)
+  // personService = inject(PersonService)
 
-  epersonData: EPerson[] | undefined
+  epersonData: EPerson[] = []
 
-  constructor() {
-    effect(() => {
-      if(this.personService.modifiedDataTable()) {
-        console.log("SIGNAL", this.data)
-        this.epersonData = this.data
-      }
-      this.personService.modifiedDataTable.set(false)
-    })
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['data'] && this.data) {
+      console.log("ngOnChanges", this.data)
+      this.epersonData = this.data
+    }
+
+    if (changes['myData']) {
+      console.log("My data")
+      // this.myFunction()
+    }
   }
+
+
+  // constructor() {
+  //   effect(() => {
+  //     if(this.personService.modifiedDataTable()) {
+  //       console.log("SIGNAL", this.data)
+  //       this.epersonData = this.data
+  //     }
+  //     this.personService.modifiedDataTable.set(false)
+  //   })
+  // }
 
   sortOrder = {
     givenName: 'none',
@@ -40,10 +54,10 @@ export class SimpleDataTableComponent {
     console.log(sortKey)
     if(this.sortOrder[sortKey] === 'asc') {
       this.sortOrder[sortKey] = 'desc'
-      this.epersonData = sortBy(this.data, sortKey).reverse()
+      this.epersonData = sortBy(this.epersonData, sortKey).reverse()
     } else {
       this.sortOrder[sortKey] = 'asc'
-      this.epersonData = sortBy(this.data, sortKey) // μόνο asc τα κάνει η sortBy()
+      this.epersonData = sortBy(this.epersonData, sortKey) // μόνο asc τα κάνει η sortBy()
     }
     
     for (let key in this.sortOrder) {
