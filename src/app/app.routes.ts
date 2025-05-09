@@ -8,6 +8,7 @@ import { ComponentOutputExampleComponent } from './components/component-output-e
 import { TemplateDrivenFormExampleComponent } from './components/template-driven-form-example/template-driven-form-example.component';
 import { EpersonTemplateDrivenFormComponent } from './components/eperson-template-driven-form/eperson-template-driven-form.component';
 import { ReactiveFormExampleComponent } from './components/reactive-form-example/reactive-form-example.component';
+import { HttpClientExampleComponent } from './components/http-client-example/http-client-example.component';
 
 export const routes: Routes = [
   {path: "welcome", component: WelcomeComponent},
@@ -19,5 +20,6 @@ export const routes: Routes = [
   {path: 'reactive-form-example', component: ReactiveFormExampleComponent},
   {path: 'eperson-template-driven-form', component: EpersonTemplateDrivenFormComponent},
   {path: 'component-output-example', component: ComponentOutputExampleComponent},
+  {path: 'http-client-example', component: HttpClientExampleComponent},
   {path: '', redirectTo:'/welcome', pathMatch:'full'}
 ];
