@@ -40,7 +40,7 @@ export class UserRegistrationComponent {
   passwordConfirmValidator(control: AbstractControl): {[key: string] : boolean} | null {  // AbstractControl είναι ο wrapper των FromGroup - Control κλπ
     const form = control as FormGroup
     const password = form.get('password')?.value
-    const confirmPassword = form.get('confirmPassowrd')?.value
+    const confirmPassword = form.get('confirmPassword')?.value
 
     if (password && confirmPassword && password !== confirmPassword) {
       form.get('confirmPassword')?.setErrors({passwordMismatch: true})
