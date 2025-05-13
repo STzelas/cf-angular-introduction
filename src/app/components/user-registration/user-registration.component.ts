@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EPerson } from 'src/app/shared/interfaces/eperson';
+import { UserService } from 'src/app/shared/services/user.service';
+import { User } from 'src/app/shared/interfaces/user';
 
 
 @Component({
@@ -17,6 +19,8 @@ import { EPerson } from 'src/app/shared/interfaces/eperson';
   styleUrl: './user-registration.component.css'
 })
 export class UserRegistrationComponent {
+  userService = inject(UserService)
+
   form = new FormGroup({
     username: new FormControl("", Validators.required),
     name: new FormControl('', Validators.required),
@@ -46,7 +50,68 @@ export class UserRegistrationComponent {
   }
 
   onSubmit() {
-    const data = this.form.value
+    const data: User = {
+      username: this.form.get('username')?.value || '',
+      password: this.form.get('password')?.value || '',
+      name: this.form.get('name')?.value || '',
+      surname: this.form.get('surname')?.value || '',
+      email: this.form.get('email')?.value || '',
+      address: {
+        area: this.form.get('area')?.value || '',
+        road: this.form.get('road')?.value || ''
+      }
+    }
     console.log(data)
+    this.userService.registerUser(data)
+      .subscribe({
+        next: (response) => {
+          console.log("User saved", response)
+
+        },
+        error: (response) => {
+          console.log("Error saving user", response)
+        }
+      })
+  }
+
+  check_duplicate_email() {
+    const email = this.form.get('email')?.value
+
+    if(email) {
+      console.log("Email", email)
+      this.userService.check_duplicate_email(email)
+      .subscribe({
+        next: (response) => {
+          console.log(response)
+          this.form.get('email')?.setErrors(null)
+        },
+        error: (response) => {
+          console.log(response)
+          const message = response.data
+          console.log(message)
+          this.form.get('email')?.setErrors({duplicateEmail: true})
+        }
+      })
+    }
+  }
+
+  check_duplicate_username() {
+    const username = this.form.get('username')?.value
+
+    if(username) {
+      this.userService.check_duplicate_username(username)
+        .subscribe({
+          next: (response) => {
+            console.log(response)
+            this.form.get('username')?.setErrors(null)
+          },
+          error: (response) => {
+            console.log(response)
+            const message = response.data
+            console.log(message)
+            this.form.get('username')?.setErrors({duplicateUsername: true})
+          }
+        })
+    }
   }
 }
