@@ -48,7 +48,6 @@
       @if (form.get('confirmPassword')?.hasError("passwordMismatch")) {
         <mat-error>Passwords do not match</mat-error>
       } @else if (form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.touched) {
-       
         <mat-error>Confirm password is missing or invalid</mat-error>
         }
       
