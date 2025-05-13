@@ -12,6 +12,14 @@ export class UserService {
   http: HttpClient = inject(HttpClient)
 
   registerUser(user: User) {
-    return this.http.post<{status: boolean, data: User}>(`${API_URL}`, user)
+    return this.http.post<{status: boolean}>(`${API_URL}`, user)
+  }
+
+  check_duplicate_email(email: string) {
+    return this.http.get<{status: boolean}>(`${API_URL}/check_duplicate_email/${email}`)
+  }
+
+  check_duplicate_username(username: string) {
+    return this.http.get<{status: boolean}>(`${API_URL}/check_duplicate_username/${username}`)
   }
 }
