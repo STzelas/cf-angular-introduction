@@ -11,6 +11,11 @@ import { ReactiveFormExampleComponent } from './components/reactive-form-example
 import { HttpClientExampleComponent } from './components/http-client-example/http-client-example.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
+// GUARDS
+import { authGuard } from './shared/guards/auth.guard';
+import { adminRoleGuard } from './shared/guards/admin-role.guard';
 
 export const routes: Routes = [
   {path: "for-directive-example", component: ForDirectiveExampleComponent},
@@ -21,9 +26,10 @@ export const routes: Routes = [
   {path: 'reactive-form-example', component: ReactiveFormExampleComponent},
   {path: 'eperson-template-driven-form', component: EpersonTemplateDrivenFormComponent},
   {path: 'component-output-example', component: ComponentOutputExampleComponent},
-  {path: 'http-client-example', component: HttpClientExampleComponent},
+  {path: 'http-client-example', component: HttpClientExampleComponent, canActivate: [authGuard, adminRoleGuard]},
   {path: 'user-registration', component:UserRegistrationComponent},
   {path: "welcome", component: WelcomeComponent},
   {path: "user-login", component: UserLoginComponent},
+  {path: "navbar", component: NavbarComponent},
   {path: '', redirectTo:'/welcome', pathMatch:'full'}
 ];
