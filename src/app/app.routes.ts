@@ -10,6 +10,7 @@ import { EpersonTemplateDrivenFormComponent } from './components/eperson-templat
 import { ReactiveFormExampleComponent } from './components/reactive-form-example/reactive-form-example.component';
 import { HttpClientExampleComponent } from './components/http-client-example/http-client-example.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
 
 export const routes: Routes = [
   {path: "for-directive-example", component: ForDirectiveExampleComponent},
@@ -23,5 +24,6 @@ export const routes: Routes = [
   {path: 'http-client-example', component: HttpClientExampleComponent},
   {path: 'user-registration', component:UserRegistrationComponent},
   {path: "welcome", component: WelcomeComponent},
+  {path: "user-login", component: UserLoginComponent},
   {path: '', redirectTo:'/welcome', pathMatch:'full'}
 ];
