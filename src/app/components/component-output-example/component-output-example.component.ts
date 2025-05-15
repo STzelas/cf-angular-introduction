@@ -42,7 +42,7 @@ export class ComponentOutputExampleComponent {
 }
 
 @Component({
-  imports: [PersonTableComponent],
+  imports: [],
   template: `
   <table>
   
