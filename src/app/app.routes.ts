@@ -16,6 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 // GUARDS
 import { authGuard } from './shared/guards/auth.guard';
 import { adminRoleGuard } from './shared/guards/admin-role.guard';
+import { RestrictedContentComponent } from './components/restricted-content/restricted-content.component';
 
 export const routes: Routes = [
   {path: "for-directive-example", component: ForDirectiveExampleComponent},
@@ -31,5 +32,6 @@ export const routes: Routes = [
   {path: "welcome", component: WelcomeComponent},
   {path: "user-login", component: UserLoginComponent},
   {path: "navbar", component: NavbarComponent},
+  {path: "restricted-content", component: RestrictedContentComponent},
   {path: '', redirectTo:'/welcome', pathMatch:'full'}
 ];
